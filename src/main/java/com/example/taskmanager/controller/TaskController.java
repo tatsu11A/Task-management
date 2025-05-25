@@ -14,32 +14,32 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    // ƒ^ƒXƒN‚Ìˆê——•\¦
+    // ã‚¿ã‚¹ã‚¯ã®ä¸€è¦§è¡¨ç¤º
     @GetMapping
     public String listTasks(Model model) {
         model.addAttribute("tasks", taskService.getAllTasks());
-        return "task_list";  // task_list.html‚ğ•\¦
+        return "task_list";  // task_list.htmlã‚’è¡¨ç¤º
     }
 
-    // V‚µ‚¢ƒ^ƒXƒN’Ç‰Á‚ÌƒtƒH[ƒ€•\¦
+    // æ–°ã—ã„ã‚¿ã‚¹ã‚¯è¿½åŠ ã®ãƒ•ã‚©ãƒ¼ãƒ è¡¨ç¤º
     @GetMapping("/new")
     public String showAddTaskForm(Model model) {
         model.addAttribute("task", new Task());
-        return "task_form";  // task_form.html‚ğ•\¦
+        return "task_form";  // task_form.htmlã‚’è¡¨ç¤º
     }
 
-    // ƒ^ƒXƒN‚Ì’Ç‰Áˆ—
+    // ã‚¿ã‚¹ã‚¯ã®è¿½åŠ å‡¦ç†
     @PostMapping("/add")
     public String addTask(@ModelAttribute Task task) {
         taskService.addTask(task);
-        return "redirect:/tasks";  // ƒ^ƒXƒNˆê——ƒy[ƒW‚ÖƒŠƒ_ƒCƒŒƒNƒg
+        return "redirect:/tasks";  // ã‚¿ã‚¹ã‚¯ä¸€è¦§ãƒšãƒ¼ã‚¸ã¸ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆ
     }
 
-    // ƒ^ƒXƒN‚ÌÚ×•\¦
+    // ã‚¿ã‚¹ã‚¯ã®è©³ç´°è¡¨ç¤º
     @GetMapping("/{id}")
     public String showTaskDetails(@PathVariable Long id, Model model) {
         Task task = taskService.getTaskById(id);
         model.addAttribute("task", task);
-        return "task_detail";  // task_detail.html‚ğ•\¦
+        return "task_detail";  // task_detail.htmlã‚’è¡¨ç¤º
     }
 }

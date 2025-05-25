@@ -1,9 +1,9 @@
 package com.example.taskmanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Task {
@@ -15,7 +15,7 @@ public class Task {
     private String title;
     private String description;
 
-    // Getter ‚Æ Setter ‚ğ’Ç‰Á
+    // Getter ã¨ Setter ã‚’è¿½åŠ 
     public Long getId() {
         return id;
     }
