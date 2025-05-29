@@ -15,7 +15,7 @@ public class Task {
     private String title;
     private String description;
 
-    // Getter ‚Æ Setter ‚ğ’Ç‰Á
+    // Getter ã¨ Setter ã‚’è¿½åŠ 
     public Long getId() {
         return id;
     }
