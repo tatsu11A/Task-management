@@ -29,6 +29,7 @@ JPA (Hibernate)
 
 ディレクトリ構成
 
+```
 src
 └── main
 ├── java
@@ -45,6 +46,7 @@ src
 │ ├── task_form.html
 │ └── task_detail.html
 └── application.properties
+```
 
 エラー対応メモ
 Whitelabel Error Page（404）
