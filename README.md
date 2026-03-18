@@ -1,11 +1,42 @@
-Spring Boot タスク管理アプリケーション
+Spring Boot タスク管理アプリケーションを作ってみたい
+
+目的
+「ログインしたユーザーが、ToDoを登録・確認・更新・完了できるようにする」
 
 機能
-ユーザー登録／ログイン機能（Spring Security による）
+1. ログイン機能
+・ユーザーID
+・パスワード
+・ログイン成功でToDo一覧へ遷移
+・ログアウトも必要
 
-- タスクの一覧表示
-- タスクの登録（追加）
-- タスクの詳細確認
+2. ToDo管理機能
+・タスク登録
+・タスク一覧表示
+・タスク詳細表示
+・タスク編集
+・タスク削除
+
+3. タスク属性
+各タスクに持たせる情報
+・タスク名
+・内容
+・優先度（高・中・低）
+・期限
+・状況表示
+・進捗状況
+・完了フラグ
+
+4. 期限比較による状況表示
+優先度管理 - 高・中・低の3段階
+期限管理 - 本日と比較して状態を表示
+
+5. 進捗管理
+以下の3段階する
+進捗状況 - 未着手、進行中、レビュー待ち
+
+6. 完了処理
+完了機能 - 完了ボタンで完了ページへ移動
 
 目的や特徴
 このプロジェクトは、Spring Boot による Web アプリ開発の学習・練習として作成。
@@ -22,44 +53,60 @@ git
 
 フレームワーク
 Spring Boot
+Spring Web
 Thymeleaf
-Spring Security
+MyBatis Framework
 H2 Database
-JPA (Hibernate)
+Validation
+Spring Boot DevTools
 
 ディレクトリ構成
 
 ```
-src
-└── main
-├── java
-│ └── com.example.demo.taskmanager
-│ ├── controller # Web コントローラ（画面制御）
-│ │ ├── TaskController.java
-│ │ └── HomeController.java ← "/" アクセス用
-│ ├── model # タスクのモデル（Entity）
-│ ├── repository # DB アクセス用（JPA）
-│ └── service # ビジネスロジック
-└── resources
-├── templates # HTML テンプレート（Thymeleaf）
-│ ├── task_list.html
-│ ├── task_form.html
-│ └── task_detail.html
-└── application.properties
+C:.
+│  .gitattributes
+│  .gitignore
+│  mvnw
+│  mvnw.cmd
+│  pom.xml
+│  README.md
+├─.mvn
+│  └─wrapper
+│          maven-wrapper.properties
+└─src/main/java/com/example/todo
+        │                   ├─ controller
+        │                   │     ├─ LoginController
+        │                   │     └─ TaskController
+        │                   ├─ service
+        │                   │     └─ TaskService
+        │                   ├─ mapper
+        │                   │     └─ TaskMapper
+        │                   ├─ entity
+        │                   │      ├─ User
+        │                   │      └─ Task
+        │                   ├─ form
+        │                   │      ├─ LoginForm
+        │                   │      └─ TaskForm
+        │                   └─ TodoApplication
+        └─resources/templates
+                      ├─ login.html
+                      ├─ task-list.html
+                      ├─ task-form.html
+                      └─ completed-tasks.html
 ```
 
-エラー対応メモ
-Whitelabel Error Page（404）
-原因：
-ブラウザで / にアクセスしたが、対応するコントローラーが存在しない。
-
-解決：
-HomeController を追加して / にアクセスされたとき redirect:/tasks に誘導するよう修正。
-
-アプリを実行
+**実行**
+起動する
+```
+コマンドプロンプトで実行
 mvnw.cmd spring-boot:run
+```
 
-※ Java 21 以上が必要です。
-
-アプリ起動後、ブラウザで以下にアクセスしてください
+## ブラウザアクセス
 http://localhost:8080/
+
+## 停止
+```
+起動中のコマンドプロンプトで、以下を実行
+Ctrl + C
+```
